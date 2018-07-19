@@ -7,14 +7,14 @@ export class Player extends React.Component {
   constructor(props){
     super(props);
     //setting initial score
-    this.state = {score: 0};
+    this.state = {score: 0}
     this.increaseScore = this.increaseScore.bind(this);
   };
 
   increaseScore(morePoints) {
     let currentScore = this.state.score
     this.setState({
-      score: currentScore ++
+      score: currentScore + 1
     });
   }
 
@@ -22,7 +22,7 @@ export class Player extends React.Component {
   render() {
     return(
       <div>
-        <Score onScore={this.increaseScore} />
+        <Score onScore={this.increaseScore} score={this.state.score}/>
       </div>
     )
   }
