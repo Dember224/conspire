@@ -10,7 +10,7 @@ export class Player extends React.Component {
     this.state = {score: 0}
     this.increaseScore = this.increaseScore.bind(this);
   };
-
+//gives more points to a player
   increaseScore(morePoints) {
     let currentScore = this.state.score
     this.setState({
@@ -18,11 +18,16 @@ export class Player extends React.Component {
     });
   }
 
+
 //Rendering the score passed from the Score component
+//Need to make all four buttons keep score individually
   render() {
-    return(
+    return (
       <div>
-        <Score onScore={this.increaseScore} score={this.state.score}/>
+        <Score onScore={this.increaseScore} score={this.state.score} />
+        <Score onScore={this.increaseScore} score={this.state.score} />
+        <Score onScore={this.increaseScore} score={this.state.score} />
+        <Score onScore={this.increaseScore} score={this.state.score} />
       </div>
     )
   }
