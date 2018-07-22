@@ -4,7 +4,7 @@ export class Score extends React.Component {
   //this component is meant to handle events that increase score
   handleScore(e) {
     const morePoints = e.target.value;
-    this.props.onScore(morePoints);
+    this.props.onClick(morePoints);
   }
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ export class Score extends React.Component {
 
   render() {
     return (
-      <button onScore={this.handleScore}>{this.props.score}</button>
+      <button player={this.props.player} onClick={this.handleScore}>{this.props.score}</button>
     )
   }
 }
