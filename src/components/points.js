@@ -13,7 +13,7 @@ export class Score extends React.Component {
 
   render() {
     return (
-      <button player={this.props.player} onClick={this.handleScore}>{this.props.score}</button>
+      <button onClick={this.handleScore}>{this.props.score}</button>
     )
   }
 }

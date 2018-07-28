@@ -8,10 +8,10 @@ export class Participant extends React.Component{
     super(props);
     //setting initial score
   this.state = {
-    points: [
-      {score: 0},
-      {player: 1}
-  ]
+    0:0,
+    1:0,
+    2:0,
+    3:0
   }
 
 
@@ -19,24 +19,18 @@ export class Participant extends React.Component{
   };
 //gives more points to a player
   increaseScore(morePoints) {
-    let currentScore = this.state.points
     this.setState({
-      points: currentScore.map((player) =>{
-        if (player === this.props.key){
-          score: currentScore + 1
-        }
-      }
-      )
+      [this.props.number]: this.state[Object.keys(this.state)[this.props.number]] + 1
     });
   }
 
   render() {
-    const playerNumber = [1, 2, 3, 4]
+    const playerNumber = [0, 1, 2, 3]
     return (
-//iterates through and makes 4 score keeping buttons (try ternary operator on the onClick prop. if this.props.player === i)
+//iterates through and makes 4 score keeping buttons. Inteded to increase each players score independently.
       <ul>
         {playerNumber.map(i => {
-          return <li key={i}>player:{i}<Score score={this.state.score} onClick={ (i) => this.increaseScore(i) } key={i} /></li>
+          return <li key={i}>player:{i}<Score score={this.state[Object.keys(this.state)[i]]} onClick={this.increaseScore} number={i} />{this.props.number}</li>
         })}
       </ul>
     )
