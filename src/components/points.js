@@ -1,4 +1,6 @@
 import React from 'react';
+import {Participant} from './participant.js';
+
 
 export class Score extends React.Component {
   //this component is meant to handle events that increase score
@@ -12,8 +14,10 @@ export class Score extends React.Component {
   }
 
   render() {
+
     return (
-      <button onClick={this.handleScore}>{this.props.score}</button>
+
+      <button onClick={this.handleScore} number={this.props.number}>{this.props.score}</button>
     )
   }
 }
