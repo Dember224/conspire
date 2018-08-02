@@ -6,39 +6,37 @@ export class Participant extends React.Component{
 
   constructor(props){
     super(props);
-    //setting initial score
+    //setting initial score. The keys each represent users. The values are scores.
   this.state = {
     0:0,
     1:0,
     2:0,
     3:0,
-
   }
 
 
     this.increaseScore = this.increaseScore.bind(this);
   };
 //gives more points to a player
-  increaseScore(morePoints) {
+  increaseScore(player) {
     this.setState({
-      [this.state.number]: this.state[Object.keys(this.state)[this.state.number]] + 1
+      [player]: this.state[Object.keys(this.state)[player]] + 1
     });
   }
 
   render() {
     const playerNumber = [0, 1, 2, 3]
     return (
-/*iterates through and makes 4 score keeping buttons. Inteded to increase each players score independently.
-Avoiding re-writing code for each player as the scoring mechanism gets more sophisticated when i build the game out.
+/*iterates through and makes 4 score keeping buttons. Increasing score independently for each player.
+Passes additional points to increaseScore method onAction().
 */
       <ul>
         {playerNumber.map(i => {
-            {this.state.number = i}
-          return <li key={i}>player:{i}<Score score={this.state[Object.keys(this.state)[i]]} onClick={this.increaseScore} number={this.state.number} key={i}  />{this.props.number}</li>
+          return <li key={i}>player:{i}<Score score={this.state[Object.keys(this.state)[i]]} onClick={() => this.increaseScore(i)} number={this.state.number} key={i}  />{this.props.number}</li>
         })}
         <li>{this.props.number}</li>
       </ul>
     )
   }
-//Still doesn't work. Map iterates through replacing "number" only allowing the last player's score to increase
+
   }
