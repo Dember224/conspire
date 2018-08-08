@@ -12,16 +12,33 @@ export class Participant extends React.Component{
     1:0,
     2:0,
     3:0,
+    turn: 0
   }
 
 
     this.increaseScore = this.increaseScore.bind(this);
   };
-//gives more points to a player
+//gives more points to a player if they have no score
   increaseScore(player) {
-    this.setState({
-      [player]: this.state[Object.keys(this.state)[player]] + 1
-    });
+    if(this.state[player] === 0 && this.state.turn === player) {
+      this.setState({
+        [player]: Math.floor(Math.random()*7)
+      });
+    }
+    if(this.state.turn < 3) {
+      this.setState({
+        turn: this.state.turn + 1
+      })
+    }
+    else {
+      this.setState({
+        turn: this.state.turn = 0
+      })
+    }
+
+
+    
+
   }
 
   render() {
@@ -34,7 +51,7 @@ Passes additional points to increaseScore method onAction().
         {playerNumber.map(i => {
           return <li key={i}>player:{i}<Score score={this.state[Object.keys(this.state)[i]]} onClick={() => this.increaseScore(i)} number={this.state.number} key={i}  />{this.props.number}</li>
         })}
-        <li>{this.props.number}</li>
+        <li>{this.state.turn}</li>
       </ul>
     )
   }
