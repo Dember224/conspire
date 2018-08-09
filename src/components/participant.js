@@ -1,5 +1,6 @@
 import React from 'react';
 import {Score} from './points.js';
+import {turnColor} from './styles/turns.js'
 
 
 export class Participant extends React.Component{
@@ -25,6 +26,7 @@ export class Participant extends React.Component{
         [player]: Math.floor(Math.random()*7)
       });
     }
+//sets the current players turn based on the last player who clicked.
     if(this.state.turn < 3) {
       this.setState({
         turn: this.state.turn + 1
@@ -32,12 +34,12 @@ export class Participant extends React.Component{
     }
     else {
       this.setState({
-        turn: this.state.turn = 0
+        turn: 0
       })
     }
 
 
-    
+
 
   }
 
@@ -47,9 +49,9 @@ export class Participant extends React.Component{
 /*iterates through and makes 4 score keeping buttons. Increasing score independently for each player.
 Passes additional points to increaseScore method onAction().
 */
-      <ul>
+      <ul style={turnColor(this.state.turn)}>
         {playerNumber.map(i => {
-          return <li key={i}>player:{i}<Score score={this.state[Object.keys(this.state)[i]]} onClick={() => this.increaseScore(i)} number={this.state.number} key={i}  />{this.props.number}</li>
+          return <li key={i}>player:{i}<Score score={this.state[Object.keys(this.state)[i]]} onClick={() => this.increaseScore(i)} number={this.state.number} key={i}   />{this.props.number}</li>
         })}
         <li>{this.state.turn}</li>
       </ul>
