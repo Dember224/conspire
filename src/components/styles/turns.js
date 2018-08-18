@@ -3,7 +3,7 @@ import React from 'react';
 export function turnColor(whosTurn) {
   switch(whosTurn) {
     case 0:
-    return {backgroundColor: 'blue'};
+    return {backgroundColor: 'blue', borderRadius:40};
     break;
     case 1:
     return {backgroundColor: 'red'};

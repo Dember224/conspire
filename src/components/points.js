@@ -1,5 +1,5 @@
 import React from 'react';
-import {Participant} from './participant.js';
+
 
 
 export class Score extends React.Component {
@@ -17,7 +17,7 @@ export class Score extends React.Component {
 
     return (
 
-      <button onClick={this.handleScore} number={this.props.number}>{this.props.score}</button>
+      <div onClick={this.handleScore} number={this.props.number}>{this.props.score}</div>
     )
   }
 }

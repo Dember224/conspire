@@ -1,6 +1,7 @@
 import React from 'react';
 import {Score} from './points.js';
-import {turnColor} from './styles/turns.js'
+import {turnColor} from './styles/turns.js';
+import {Steal} from './steal.js'
 
 
 export class Participant extends React.Component{
@@ -13,11 +14,13 @@ export class Participant extends React.Component{
     1:0,
     2:0,
     3:0,
-    turn: 0
+    turn: 0,
+    kitty: 0
   }
 
 
     this.increaseScore = this.increaseScore.bind(this);
+    this.stealScore = this.stealScore.bind(this);
   };
 //gives more points to a player if they have no score
   increaseScore(player) {
@@ -38,23 +41,50 @@ export class Participant extends React.Component{
       })
     }
 
-
-
-
+  };
+//steals half the score from the selected player and adds it to the current player's score.
+  stealScore(player) {
+    if(this.state.turn !== player) {
+      const robbedScore = this.state[player]*.5
+      const currentScore = this.state[this.state.turn]
+      this.setState({
+        [player]: robbedScore,
+        [this.state.turn]: currentScore + robbedScore
+      })
+      if(this.state.turn < 3) {
+        this.setState({
+          turn: this.state.turn + 1
+        })
+      }
+      else {
+        this.setState({
+          turn: 0
+        })
+      }
+    }
   }
 
   render() {
-    const playerNumber = [0, 1, 2, 3]
     return (
-/*iterates through and makes 4 score keeping buttons. Increasing score independently for each player.
-Passes additional points to increaseScore method onAction().
+/*For setting the initial score at the beggining of play
 */
-      <ul style={turnColor(this.state.turn)}>
-        {playerNumber.map(i => {
-          return <li key={i}>player:{i}<Score score={this.state[Object.keys(this.state)[i]]} onClick={() => this.increaseScore(i)} number={this.state.number} key={i}   />{this.props.number}</li>
-        })}
-        <li>{this.state.turn}</li>
-      </ul>
+      <div >
+        <div style={turnColor(this.state.turn)}>player:{this.state.turn}<Score score={this.state[Object.keys(this.state)[this.state.turn]]} onClick={() => this.increaseScore(this.state.turn)} number={this.state.score} /></div>
+        <ol>
+          <li>Player 1: {this.state[0]}$</li>
+          <li>Player 2: {this.state[1]}$</li>
+          <li>Player 3: {this.state[2]}$</li>
+          <li>Player 4: {this.state[3]}$</li>
+        </ol>
+
+        <div style={turnColor(this.state.turn)}>Steal from player:
+        <Steal onClick={() => this.stealScore(0)} number={1}/>
+        <Steal onClick={() => this.stealScore(1)} number={2}/>
+        <Steal onClick={() => this.stealScore(2)} number={3}/>
+        <Steal onClick={() => this.stealScore(3)} number={4}/>
+
+        </div>
+      </div>
     )
   }
 
