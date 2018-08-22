@@ -17,7 +17,7 @@ export class Score extends React.Component {
 
     return (
 
-      <div onClick={this.handleScore} number={this.props.number}>{this.props.score}</div>
+      <div onClick={this.handleScore} number={this.props.number}>{this.props.score}$</div>
     )
   }
 }
