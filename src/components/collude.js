@@ -20,7 +20,7 @@ export class Collude extends React.Component{
       <div>
       Collude with:
         <input type="button" value={this.props.offerTo} onClick={this.handleCollusion}></input>
-
+          {whosColluding(this.props.turn, this.props.player1, this.props.player2, this.props.player3, this.props.player4, this.handleCollusion)}
         {this.props.player1} {this.props.player2} {this.props.player3} {this.props.player4}
       </div>
     )

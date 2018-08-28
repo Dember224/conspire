@@ -3,7 +3,7 @@ import {Score} from './points.js';
 import {turnColor} from './styles/turns.js';
 import {Steal} from './steal.js'
 import {Collude} from './collude.js'
-
+import {colludeDisplay} from './styles/colludeDisplay.js'
 
 export class Participant extends React.Component{
 
@@ -24,7 +24,7 @@ export class Participant extends React.Component{
     player4: null
   }
 
-
+    this.collude = this.collude.bind(this);
     this.increaseScore = this.increaseScore.bind(this);
     this.stealScore = this.stealScore.bind(this);
   };
@@ -77,6 +77,20 @@ collude(player, against) {
         this.setState({
           player1: [this.state.turn, against]
         })
+      }
+      else{
+        const combined = this.state.player1[0] + this.state[this.state.turn]
+        if (combined > this.state[against]) {
+
+          const halfAgainstScore = this.state[against]/2
+          this.setState({
+            [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
+            [this.state[player]]: this.state[player] + (halfAgainstScore/2),
+            [against]: halfAgainstScore,
+            turn: this.state.turn +1,
+            player1: null
+          })
+        }
       };
     break;
     case 'player2':
@@ -84,6 +98,20 @@ collude(player, against) {
         this.setState({
           player2: [this.state.turn, against]
         })
+      }
+      else{
+        const combined = this.state.player2[0] + this.state[this.state.turn]
+        if (combined > this.state[against]) {
+
+          const halfAgainstScore = this.state[against]/2
+          this.setState({
+            [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
+            [this.state[player]]: this.state[player] + (halfAgainstScore/2),
+            [against]: halfAgainstScore,
+            turn: this.state.turn +1,
+            player2: null
+          })
+        }
       }  ;
     break;
     case 'player3':
@@ -91,6 +119,20 @@ collude(player, against) {
         this.setState({
           player3: [this.state.turn, against]
         })
+      }
+      else{
+        const combined = this.state.player3[0] + this.state[this.state.turn]
+        if (combined > this.state[against]) {
+
+          const halfAgainstScore = this.state[against]/2
+          this.setState({
+            [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
+            [this.state[player]]: this.state[player] + (halfAgainstScore/2),
+            [against]: halfAgainstScore,
+            turn: this.state.turn +1,
+            player3: null
+          })
+        }
       } ;
     break;
     case 'player4':
@@ -98,6 +140,20 @@ collude(player, against) {
         this.setState({
           player4: [this.state.turn, against]
         })
+      }
+      else{
+        const combined = this.state.player4[0] + this.state[this.state.turn]
+        if (combined > this.state[against]) {
+
+          const halfAgainstScore = this.state[against]/2
+          this.setState({
+            [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
+            [this.state[player]]: this.state[player] + (halfAgainstScore/2),
+            [against]: halfAgainstScore,
+            turn: this.state.turn +1,
+            player4: null
+          })
+        }
       } ;
     break;
   }
@@ -105,7 +161,7 @@ collude(player, against) {
 }
 
   render() {
-    <Collude />
+
     return (
 /*For setting the initial score at the beggining of play
 */
@@ -126,24 +182,12 @@ collude(player, against) {
 
         </div>
 
+        {colludeDisplay(this.state.turn, this.state.player1, this.state.player2, this.state.player3, this.state.player4, this.collude)}
 
-        <Collude onClick={() => this.collude('player1', 1)} offerTo='player1 against 2' turn={this.state.turn} player1={this.state.player1}  />
-        <Collude onClick={() => this.collude('player1', 2)} offerTo='player1 against 3' turn={this.state.turn} player1={this.state.player1}  />
-        <Collude onClick={() => this.collude('player1', 3)} offerTo='player1 against 4' turn={this.state.turn} player1={this.state.player1} />
-
-        <Collude onClick={() => this.collude('player2', 0)} offerTo='player2 against 1' turn={this.state.turn} player2={this.state.player2} />
-        <Collude onClick={() => this.collude('player2', 2)} offerTo='player2 against 3' turn={this.state.turn} player2={this.state.player2} />
-        <Collude onClick={() => this.collude('player2', 3)} offerTo='player2 against 4' turn={this.state.turn} player2={this.state.player2} />
-
-        <Collude onClick={() => this.collude('player3', 0)} offerTo='player3 against 1' turn={this.state.turn} player3={this.state.player3} />
-        <Collude onClick={() => this.collude('player3', 1)} offerTo='player3 against 2' turn={this.state.turn} player3={this.state.player3} />
-        <Collude onClick={() => this.collude('player3', 3)} offerTo='player3 against 4' turn={this.state.turn} player3={this.state.player3} />
-
-        <Collude onClick={() => this.collude('player4', 0)} offerTo='player4 against 1' turn={this.state.turn} player4={this.state.player4}/>
-        <Collude onClick={() => this.collude('player4', 1)} offerTo='player4 against 2' turn={this.state.turn} player4={this.state.player4}/>
-        <Collude onClick={() => this.collude('player4', 2)} offerTo='player4 against 3' turn={this.state.turn} player4={this.state.player4}/>
       </div>
     )
-  }
+    /*Passes the collusion offer to the collude method with who the offer is to and who the offer is against/will be steailing from
+    the offer is always from the current player or this.state.turn at the time of the offer */
 
   }
+}
