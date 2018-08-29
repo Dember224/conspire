@@ -75,7 +75,8 @@ collude(player, against) {
     case 'player1':
       if (this.state.player1 === null) {
         this.setState({
-          player1: [this.state.turn, against]
+          player1: [this.state.turn, against],
+          turn: this.state.turn +1
         })
       }
       else{
@@ -96,7 +97,8 @@ collude(player, against) {
     case 'player2':
       if (this.state.player2 === null) {
         this.setState({
-          player2: [this.state.turn, against]
+          player2: [this.state.turn, against],
+          turn: this.state.turn +1
         })
       }
       else{
@@ -117,7 +119,8 @@ collude(player, against) {
     case 'player3':
       if (this.state.player3 === null) {
         this.setState({
-          player3: [this.state.turn, against]
+          player3: [this.state.turn, against],
+          turn: this.state.turn + 1
         })
       }
       else{
@@ -138,7 +141,8 @@ collude(player, against) {
     case 'player4':
       if (this.state.player4 === null) {
         this.setState({
-          player4: [this.state.turn, against]
+          player4: [this.state.turn, against],
+          turn: this.state.turn +1
         })
       }
       else{
