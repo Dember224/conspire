@@ -70,7 +70,7 @@ export class Participant extends React.Component{
     }
   }
 
-collude(player, against) {
+collude(player, against, acceptFrom) {
   switch(player) {
     case 'player1':
       if (this.state.player1 === null) {
@@ -80,13 +80,13 @@ collude(player, against) {
         })
       }
       else{
-        const combined = this.state.player1[0] + this.state[this.state.turn]
+        const combined = this.state[this.state.player1[0]] + this.state[this.state.turn]
         if (combined > this.state[against]) {
 
           const halfAgainstScore = this.state[against]/2
           this.setState({
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
-            [this.state[player]]: this.state[player] + (halfAgainstScore/2),
+            [this.state[acceptFrom]]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
             turn: this.state.turn +1,
             player1: null
@@ -102,13 +102,13 @@ collude(player, against) {
         })
       }
       else{
-        const combined = this.state.player2[0] + this.state[this.state.turn]
+        const combined = this.state[this.state.player2[0]] + this.state[this.state.turn]
         if (combined > this.state[against]) {
 
           const halfAgainstScore = this.state[against]/2
           this.setState({
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
-            [this.state[player]]: this.state[player] + (halfAgainstScore/2),
+            [this.state[acceptFrom]]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
             turn: this.state.turn +1,
             player2: null
@@ -124,13 +124,13 @@ collude(player, against) {
         })
       }
       else{
-        const combined = this.state.player3[0] + this.state[this.state.turn]
+        const combined = this.state[this.state.player3[0]] + this.state[this.state.turn]
         if (combined > this.state[against]) {
 
           const halfAgainstScore = this.state[against]/2
           this.setState({
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
-            [this.state[player]]: this.state[player] + (halfAgainstScore/2),
+            [this.state[acceptFrom]]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
             turn: this.state.turn +1,
             player3: null
@@ -146,13 +146,13 @@ collude(player, against) {
         })
       }
       else{
-        const combined = this.state.player4[0] + this.state[this.state.turn]
+        const combined = this.state[this.state.player4[0]] + this.state[this.state.turn]
         if (combined > this.state[against]) {
 
           const halfAgainstScore = this.state[against]/2
           this.setState({
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
-            [this.state[player]]: this.state[player] + (halfAgainstScore/2),
+            [this.state[acceptFrom]]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
             turn: this.state.turn +1,
             player4: null

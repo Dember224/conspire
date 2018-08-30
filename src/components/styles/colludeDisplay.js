@@ -18,7 +18,7 @@ export function colludeDisplay(turn, player1, player2, player3, player4, collude
         } else{
           return(
             <div>
-              <Collude onClick={() => collude('player1', player1[1])} turn={turn} player1={player1} player2={player2} player3={player3} player4={player4}/>
+              <Collude onClick={() => collude('player1', player1[1], player1[0])} turn={turn} player1={player1} player2={player2} player3={player3} player4={player4}/>
             </div>
           )
         };
@@ -38,7 +38,7 @@ export function colludeDisplay(turn, player1, player2, player3, player4, collude
       } else {
           return(
           <div>
-            <Collude onClick={() => collude('player2', player2[1])} turn={turn} player1={player1} player2={player2} player3={player3} player4={player4}/>
+            <Collude onClick={() => collude('player2', player2[1], player2[0])} turn={turn} player1={player1} player2={player2} player3={player3} player4={player4}/>
           </div>
             )
         };
@@ -58,7 +58,7 @@ export function colludeDisplay(turn, player1, player2, player3, player4, collude
           } else{
             return(
               <div>
-                <Collude onClick={() => collude('player3', player3[1])} turn={turn} player1={player1} player2={player2} player3={player3} player4={player4}/>
+                <Collude onClick={() => collude('player3', player3[1], player3[0])} turn={turn} player1={player1} player2={player2} player3={player3} player4={player4}/>
               </div>
             )
           }
@@ -78,7 +78,7 @@ export function colludeDisplay(turn, player1, player2, player3, player4, collude
           }else {
             return(
               <div>
-                <Collude onClick={() => collude('player4', player4[1])} turn={turn} player1={player1} player2={player2} player3={player3} player4={player4} />
+                <Collude onClick={() => collude('player4', player4[1], player4[0])} turn={turn} player1={player1} player2={player2} player3={player3} player4={player4} />
               </div>
             )
           }
