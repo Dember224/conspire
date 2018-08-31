@@ -55,7 +55,8 @@ export class Participant extends React.Component{
       const currentScore = this.state[this.state.turn]
       this.setState({
         [player]: robbedScore,
-        [this.state.turn]: currentScore + robbedScore
+        [this.state.turn]: currentScore + robbedScore,
+        kitty: this.state.kitty + robbedScore*.5
       })
       if(this.state.turn < 3) {
         this.setState({
@@ -86,10 +87,11 @@ collude(player, against, acceptFrom) {
           const halfAgainstScore = this.state[against]/2
           this.setState({
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
-            [this.state[acceptFrom]]: this.state[acceptFrom] + (halfAgainstScore/2),
+            [acceptFrom]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
             turn: this.state.turn +1,
-            player1: null
+            player1: null,
+            kitty: halfAgainstScore *.5 + this.state.kitty
           })
         }
       };
@@ -108,10 +110,11 @@ collude(player, against, acceptFrom) {
           const halfAgainstScore = this.state[against]/2
           this.setState({
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
-            [this.state[acceptFrom]]: this.state[acceptFrom] + (halfAgainstScore/2),
+            [acceptFrom]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
             turn: this.state.turn +1,
-            player2: null
+            player2: null,
+            kitty: halfAgainstScore *.5 + this.state.kitty
           })
         }
       }  ;
@@ -130,10 +133,11 @@ collude(player, against, acceptFrom) {
           const halfAgainstScore = this.state[against]/2
           this.setState({
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
-            [this.state[acceptFrom]]: this.state[acceptFrom] + (halfAgainstScore/2),
+            [acceptFrom]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
             turn: this.state.turn +1,
-            player3: null
+            player3: null,
+            kitty: halfAgainstScore *.5 + this.state.kitty
           })
         }
       } ;
@@ -152,10 +156,11 @@ collude(player, against, acceptFrom) {
           const halfAgainstScore = this.state[against]/2
           this.setState({
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
-            [this.state[acceptFrom]]: this.state[acceptFrom] + (halfAgainstScore/2),
+            [acceptFrom]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
-            turn: this.state.turn +1,
-            player4: null
+            turn: 0,
+            player4: null,
+            kitty: halfAgainstScore *.5 + this.state.kitty
           })
         }
       } ;
@@ -187,7 +192,7 @@ collude(player, against, acceptFrom) {
         </div>
 
         {colludeDisplay(this.state.turn, this.state.player1, this.state.player2, this.state.player3, this.state.player4, this.collude)}
-
+        {this.state.kitty}
       </div>
     )
     /*Passes the collusion offer to the collude method with who the offer is to and who the offer is against/will be steailing from
