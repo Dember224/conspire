@@ -4,6 +4,8 @@ import {turnColor} from './styles/turns.js';
 import {Steal} from './steal.js'
 import {Collude} from './collude.js'
 import {colludeDisplay} from './styles/colludeDisplay.js'
+import {TaxTheft} from './taxTheft.js'
+import {HonestDay} from './honestDay.js'
 
 export class Participant extends React.Component{
 
@@ -53,10 +55,11 @@ export class Participant extends React.Component{
     if(this.state.turn !== player && this.state[this.state.turn] > this.state[player]) {
       const robbedScore = this.state[player]*.5
       const currentScore = this.state[this.state.turn]
+
       this.setState({
         [player]: robbedScore,
-        [this.state.turn]: currentScore + robbedScore,
-        kitty: this.state.kitty + robbedScore*.5
+        [this.state.turn]: (currentScore + robbedScore).toFixed(2),
+        kitty: this.state.kitty + robbedScore*.7
       })
       if(this.state.turn < 3) {
         this.setState({
@@ -68,6 +71,25 @@ export class Participant extends React.Component{
           turn: 0
         })
       }
+    } else{
+      const lowRobbedScore = this.state[player]*.85
+      const currentScore = this.state[this.state.turn]
+      this.setState({
+        [player]: lowRobbedScore,
+        [this.state.turn]: currentScore + (this.state[player] - lowRobbedScore),
+        kitty: this.state.kitty + lowRobbedScore*.15
+      })
+      if(this.state.turn < 3) {
+        this.setState({
+          turn: this.state.turn + 1
+        })
+      }
+      else {
+        this.setState({
+          turn: 0
+        })
+      }
+
     }
   }
 
@@ -91,7 +113,7 @@ collude(player, against, acceptFrom) {
             [against]: halfAgainstScore,
             turn: this.state.turn +1,
             player1: null,
-            kitty: halfAgainstScore *.5 + this.state.kitty
+            kitty: halfAgainstScore *.7 + this.state.kitty
           })
         }
       };
@@ -114,7 +136,7 @@ collude(player, against, acceptFrom) {
             [against]: halfAgainstScore,
             turn: this.state.turn +1,
             player2: null,
-            kitty: halfAgainstScore *.5 + this.state.kitty
+            kitty: halfAgainstScore *.7 + this.state.kitty
           })
         }
       }  ;
@@ -137,7 +159,7 @@ collude(player, against, acceptFrom) {
             [against]: halfAgainstScore,
             turn: this.state.turn +1,
             player3: null,
-            kitty: halfAgainstScore *.5 + this.state.kitty
+            kitty: halfAgainstScore *.7 + this.state.kitty
           })
         }
       } ;
@@ -160,7 +182,7 @@ collude(player, against, acceptFrom) {
             [against]: halfAgainstScore,
             turn: 0,
             player4: null,
-            kitty: halfAgainstScore *.5 + this.state.kitty
+            kitty: halfAgainstScore *.7 + this.state.kitty
           })
         }
       } ;
@@ -169,6 +191,30 @@ collude(player, against, acceptFrom) {
 
 }
 
+robKitty() {
+  this.setState({
+    [this.state.turn]: this.state[this.state.turn]+ this.state.kitty,
+    kitty: 0,
+    turn: this.state.turn + 1
+  })
+  if(this.state.turn < 3) {
+    this.setState({turn: this.state.turn + 1})
+  }else{
+    this.setState({turn: 0})
+  }
+}
+
+honestDay(){
+  this.setState({
+    [this.state.turn]: this.state[this.state.turn] + 10,
+    kitty: this.state.kitty +10
+  })
+  if(this.state.turn < 3 ) {
+    this.setState({turn: this.state.turn + 1})
+  }else {
+    this.setState({turn: 0})
+  }
+}
   render() {
 
     return (
@@ -192,7 +238,9 @@ collude(player, against, acceptFrom) {
         </div>
 
         {colludeDisplay(this.state.turn, this.state.player1, this.state.player2, this.state.player3, this.state.player4, this.collude)}
-        {this.state.kitty}
+        Uncle Sams Tax Pile: ${this.state.kitty.toFixed(2)}
+        <TaxTheft onClick={() => this.robKitty()} />
+        <HonestDay onClick={() => this.honestDay()} />
       </div>
     )
     /*Passes the collusion offer to the collude method with who the offer is to and who the offer is against/will be steailing from
