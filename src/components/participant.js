@@ -57,8 +57,8 @@ export class Participant extends React.Component{
       const currentScore = this.state[this.state.turn]
 
       this.setState({
-        [player]: robbedScore,
-        [this.state.turn]: (currentScore + robbedScore).toFixed(2),
+        [player]: (robbedScore),
+        [this.state.turn]: currentScore + robbedScore,
         kitty: this.state.kitty + robbedScore*.7
       })
       if(this.state.turn < 3) {
@@ -72,7 +72,7 @@ export class Participant extends React.Component{
         })
       }
     } else{
-      const lowRobbedScore = this.state[player]*.85
+      const lowRobbedScore = this.state[player]*.90
       const currentScore = this.state[this.state.turn]
       this.setState({
         [player]: lowRobbedScore,
@@ -98,8 +98,7 @@ collude(player, against, acceptFrom) {
     case 'player1':
       if (this.state.player1 === null) {
         this.setState({
-          player1: [this.state.turn, against],
-          turn: this.state.turn +1
+          player1: [this.state.turn, against]
         })
       }
       else{
@@ -111,7 +110,6 @@ collude(player, against, acceptFrom) {
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
             [acceptFrom]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
-            turn: this.state.turn +1,
             player1: null,
             kitty: halfAgainstScore *.7 + this.state.kitty
           })
@@ -121,8 +119,7 @@ collude(player, against, acceptFrom) {
     case 'player2':
       if (this.state.player2 === null) {
         this.setState({
-          player2: [this.state.turn, against],
-          turn: this.state.turn +1
+          player2: [this.state.turn, against]
         })
       }
       else{
@@ -134,7 +131,6 @@ collude(player, against, acceptFrom) {
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
             [acceptFrom]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
-            turn: this.state.turn +1,
             player2: null,
             kitty: halfAgainstScore *.7 + this.state.kitty
           })
@@ -144,8 +140,7 @@ collude(player, against, acceptFrom) {
     case 'player3':
       if (this.state.player3 === null) {
         this.setState({
-          player3: [this.state.turn, against],
-          turn: this.state.turn + 1
+          player3: [this.state.turn, against]
         })
       }
       else{
@@ -157,7 +152,6 @@ collude(player, against, acceptFrom) {
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
             [acceptFrom]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
-            turn: this.state.turn +1,
             player3: null,
             kitty: halfAgainstScore *.7 + this.state.kitty
           })
@@ -167,8 +161,7 @@ collude(player, against, acceptFrom) {
     case 'player4':
       if (this.state.player4 === null) {
         this.setState({
-          player4: [this.state.turn, against],
-          turn: this.state.turn +1
+          player4: [this.state.turn, against]
         })
       }
       else{
@@ -180,13 +173,22 @@ collude(player, against, acceptFrom) {
             [this.state.turn]: this.state[this.state.turn] + (halfAgainstScore/2),
             [acceptFrom]: this.state[acceptFrom] + (halfAgainstScore/2),
             [against]: halfAgainstScore,
-            turn: 0,
             player4: null,
             kitty: halfAgainstScore *.7 + this.state.kitty
           })
         }
       } ;
     break;
+  }
+  if(this.state.turn < 3) {
+    this.setState({
+      turn: this.state.turn + 1
+    })
+  }
+  else {
+    this.setState({
+      turn: 0
+    })
   }
 
 }
@@ -223,10 +225,10 @@ honestDay(){
       <div >
         <div style={turnColor(this.state.turn)}>players turn:{this.state.turn +1}<Score score={this.state[Object.keys(this.state)[this.state.turn]]} onClick={() => this.increaseScore(this.state.turn)} number={this.state.score} /></div>
         <ol>
-          <li>Player 1: {this.state[0]}$</li>
-          <li>Player 2: {this.state[1]}$</li>
-          <li>Player 3: {this.state[2]}$</li>
-          <li>Player 4: {this.state[3]}$</li>
+          <li>Player 1: {parseFloat(this.state[0]).toFixed(2)}$</li>
+          <li>Player 2: {parseFloat(this.state[1]).toFixed(2)}$</li>
+          <li>Player 3: {parseFloat(this.state[2]).toFixed(2)}$</li>
+          <li>Player 4: {parseFloat(this.state[3]).toFixed(2)}$</li>
         </ol>
 
         <div style={turnColor(this.state.turn)}>Steal from player:
@@ -238,7 +240,7 @@ honestDay(){
         </div>
 
         {colludeDisplay(this.state.turn, this.state.player1, this.state.player2, this.state.player3, this.state.player4, this.collude)}
-        Uncle Sams Tax Pile: ${this.state.kitty.toFixed(2)}
+        Uncle Sams Tax Pile: ${parseFloat(this.state.kitty).toFixed(2)}
         <TaxTheft onClick={() => this.robKitty()} />
         <HonestDay onClick={() => this.honestDay()} />
       </div>
