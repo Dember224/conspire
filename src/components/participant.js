@@ -6,6 +6,7 @@ import {Collude} from './collude.js'
 import {colludeDisplay} from './styles/colludeDisplay.js'
 import {TaxTheft} from './taxTheft.js'
 import {HonestDay} from './honestDay.js'
+import {Victory} from './victory.js'
 
 export class Participant extends React.Component{
 
@@ -194,11 +195,17 @@ collude(player, against, acceptFrom) {
 }
 
 robKitty() {
-  this.setState({
-    [this.state.turn]: this.state[this.state.turn]+ this.state.kitty,
-    kitty: 0,
-    turn: this.state.turn + 1
-  })
+  const willRob = Math.random();
+  if(willRob > .7) {
+    this.setState({
+      [this.state.turn]: this.state[this.state.turn]+ this.state.kitty,
+      kitty: 0
+    })
+  } else {
+    this.setState({
+      [this.state.turn]: 0
+    })
+  }
   if(this.state.turn < 3) {
     this.setState({turn: this.state.turn + 1})
   }else{
@@ -223,6 +230,7 @@ honestDay(){
 /*For setting the initial score at the beggining of play
 */
       <div >
+        <Victory player1={this.state[0]} player2={this.state[1]} player3={this.state[2]} player4={this.state[3]} currentScore={this.state[this.state.turn]} />
         <div style={turnColor(this.state.turn)}>players turn:{this.state.turn +1}<Score score={this.state[Object.keys(this.state)[this.state.turn]]} onClick={() => this.increaseScore(this.state.turn)} number={this.state.score} /></div>
         <ol>
           <li>Player 1: {parseFloat(this.state[0]).toFixed(2)}$</li>
