@@ -101,6 +101,21 @@ collude(player, against, acceptFrom) {
         this.setState({
           player1: [this.state.turn, against]
         })
+        if(this.state.turn < 3) {
+          this.setState({
+            turn: this.state.turn + 1
+          })
+        }
+        else {
+          this.setState({
+            turn: 0
+          })
+        }
+      }
+      else if(against === "decline"){
+        this.setState({
+          player1: null
+        })
       }
       else{
         const combined = this.state[this.state.player1[0]] + this.state[this.state.turn]
@@ -114,6 +129,16 @@ collude(player, against, acceptFrom) {
             player1: null,
             kitty: halfAgainstScore *.7 + this.state.kitty
           })
+          if(this.state.turn < 3) {
+            this.setState({
+              turn: this.state.turn + 1
+            })
+          }
+          else {
+            this.setState({
+              turn: 0
+            })
+          }
         }
       };
     break;
@@ -121,6 +146,21 @@ collude(player, against, acceptFrom) {
       if (this.state.player2 === null) {
         this.setState({
           player2: [this.state.turn, against]
+        })
+        if(this.state.turn < 3) {
+          this.setState({
+            turn: this.state.turn + 1
+          })
+        }
+        else {
+          this.setState({
+            turn: 0
+          })
+        }
+      }
+      else if(against === "decline"){
+        this.setState({
+          player2: null
         })
       }
       else{
@@ -135,6 +175,16 @@ collude(player, against, acceptFrom) {
             player2: null,
             kitty: halfAgainstScore *.7 + this.state.kitty
           })
+          if(this.state.turn < 3) {
+            this.setState({
+              turn: this.state.turn + 1
+            })
+          }
+          else {
+            this.setState({
+              turn: 0
+            })
+          }
         }
       }  ;
     break;
@@ -142,6 +192,21 @@ collude(player, against, acceptFrom) {
       if (this.state.player3 === null) {
         this.setState({
           player3: [this.state.turn, against]
+        })
+        if(this.state.turn < 3) {
+          this.setState({
+            turn: this.state.turn + 1
+          })
+        }
+        else {
+          this.setState({
+            turn: 0
+          })
+        }
+      }
+      else if(against === "decline"){
+        this.setState({
+          player3: null
         })
       }
       else{
@@ -156,6 +221,16 @@ collude(player, against, acceptFrom) {
             player3: null,
             kitty: halfAgainstScore *.7 + this.state.kitty
           })
+          if(this.state.turn < 3) {
+            this.setState({
+              turn: this.state.turn + 1
+            })
+          }
+          else {
+            this.setState({
+              turn: 0
+            })
+          }
         }
       } ;
     break;
@@ -163,6 +238,21 @@ collude(player, against, acceptFrom) {
       if (this.state.player4 === null) {
         this.setState({
           player4: [this.state.turn, against]
+        })
+        if(this.state.turn < 3) {
+          this.setState({
+            turn: this.state.turn + 1
+          })
+        }
+        else {
+          this.setState({
+            turn: 0
+          })
+        }
+      }
+      else if(against === "decline"){
+        this.setState({
+          player4: null
         })
       }
       else{
@@ -177,20 +267,21 @@ collude(player, against, acceptFrom) {
             player4: null,
             kitty: halfAgainstScore *.7 + this.state.kitty
           })
+          if(this.state.turn < 3) {
+            this.setState({
+              turn: this.state.turn + 1
+            })
+          }
+          else {
+            this.setState({
+              turn: 0
+            })
+          }
         }
       } ;
     break;
   }
-  if(this.state.turn < 3) {
-    this.setState({
-      turn: this.state.turn + 1
-    })
-  }
-  else {
-    this.setState({
-      turn: 0
-    })
-  }
+
 
 }
 
