@@ -322,7 +322,7 @@ honestDay(){
 */
       <div >
         <Victory player1={this.state[0]} player2={this.state[1]} player3={this.state[2]} player4={this.state[3]} currentScore={this.state[this.state.turn]} />
-        <div style={turnColor(this.state.turn)}>players turn:{this.state.turn +1}<Score score={this.state[Object.keys(this.state)[this.state.turn]]} onClick={() => this.increaseScore(this.state.turn)} number={this.state.score} /></div>
+        <div style={turnColor(this.state.turn)} className="button"><span className="button_text">players turn:{this.state.turn +1}</span><Score score={this.state[Object.keys(this.state)[this.state.turn]]} onClick={() => this.increaseScore(this.state.turn)} number={this.state.score} /></div>
         <ol>
           <li>Player 1: {parseFloat(this.state[0]).toFixed(2)}$</li>
           <li>Player 2: {parseFloat(this.state[1]).toFixed(2)}$</li>

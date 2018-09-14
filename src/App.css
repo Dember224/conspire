@@ -26,3 +26,31 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/*buttons for initiating game and bringing score up from 0 */
+.button{
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border-radius: 40%;
+  border: solid;
+  text-align: center;
+}
+
+.button:hover{
+  border-color: tan;
+}
+
+.button_score{
+  width: 100px;
+  height: 100px;
+}
+.button_score:hover{
+  cursor: pointer;
+}
+
+.button_text{
+position: relative;
+top:30px;
+
+}
