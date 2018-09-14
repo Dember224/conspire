@@ -39,6 +39,7 @@
 
 .button:hover{
   border-color: tan;
+  color: white;
 }
 
 .button_score{
@@ -47,10 +48,38 @@
 }
 .button_score:hover{
   cursor: pointer;
+  color: white;
 }
 
 .button_text{
 position: relative;
 top:30px;
+}
 
+/*Display player scores */
+
+.score{
+  display: inline;
+  margin-right: 20px;
+}
+
+/*Steal buttons*/
+
+.steal{
+  width: 200px;
+  height: 25px;
+  margin: auto;
+  border: solid;
+  border-radius: 20%;
+
+}
+
+.steal:hover{
+  cursor:pointer;
+  border-color: white;
+  color:white;
+}
+
+#robbery{
+  color: white;
 }

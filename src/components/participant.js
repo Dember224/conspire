@@ -324,17 +324,17 @@ honestDay(){
         <Victory player1={this.state[0]} player2={this.state[1]} player3={this.state[2]} player4={this.state[3]} currentScore={this.state[this.state.turn]} />
         <div style={turnColor(this.state.turn)} className="button"><span className="button_text">players turn:{this.state.turn +1}</span><Score score={this.state[Object.keys(this.state)[this.state.turn]]} onClick={() => this.increaseScore(this.state.turn)} number={this.state.score} /></div>
         <ol>
-          <li>Player 1: {parseFloat(this.state[0]).toFixed(2)}$</li>
-          <li>Player 2: {parseFloat(this.state[1]).toFixed(2)}$</li>
-          <li>Player 3: {parseFloat(this.state[2]).toFixed(2)}$</li>
-          <li>Player 4: {parseFloat(this.state[3]).toFixed(2)}$</li>
+          <li className="score">Player 1: {parseFloat(this.state[0]).toFixed(2)}$</li>
+          <li className="score">Player 2: {parseFloat(this.state[1]).toFixed(2)}$</li>
+          <li className="score">Player 3: {parseFloat(this.state[2]).toFixed(2)}$</li>
+          <li className="score">Player 4: {parseFloat(this.state[3]).toFixed(2)}$</li>
         </ol>
 
-        <div style={turnColor(this.state.turn)}>Steal from player:
-        <Steal onClick={() => this.stealScore(0)} number={1}/>
-        <Steal onClick={() => this.stealScore(1)} number={2}/>
-        <Steal onClick={() => this.stealScore(2)} number={3}/>
-        <Steal onClick={() => this.stealScore(3)} number={4}/>
+        <div style={turnColor(this.state.turn)}><span id="robbery">Steal from player:</span>
+        <Steal onClick={() => this.stealScore(0)} number={0}/>
+        <Steal onClick={() => this.stealScore(1)} number={1}/>
+        <Steal onClick={() => this.stealScore(2)} number={2}/>
+        <Steal onClick={() => this.stealScore(3)} number={3}/>
 
         </div>
 

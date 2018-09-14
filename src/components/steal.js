@@ -1,4 +1,5 @@
 import React from 'react';
+import {turnColor} from './styles/turns.js';
 
 export class Steal extends React.Component {
   handleSteal(e) {
@@ -14,7 +15,7 @@ export class Steal extends React.Component {
   render() {
     return(
     <div>
-      <input type="button" value={this.props.number} onClick={this.handleSteal}></input>
+      <div className="steal" style={turnColor(this.props.number)} value={this.props.number} onClick={this.handleSteal}>{this.props.number +1}</div>
     </div>
   )
   }
