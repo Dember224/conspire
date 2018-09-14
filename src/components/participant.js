@@ -339,7 +339,7 @@ honestDay(){
         </div>
 
         {colludeDisplay(this.state.turn, this.state.player1, this.state.player2, this.state.player3, this.state.player4, this.collude)}
-        Uncle Sams Tax Pile: ${parseFloat(this.state.kitty).toFixed(2)}
+        <div className="taxes">Uncle Sams Tax Pile: ${parseFloat(this.state.kitty).toFixed(2)}</div>
         <TaxTheft onClick={() => this.robKitty()} />
         <HonestDay onClick={() => this.honestDay()} />
       </div>
