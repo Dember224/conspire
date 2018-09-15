@@ -13,7 +13,7 @@ export class TaxTheft extends React.Component {
 
   render() {
     return(
-      <input type="button" value="Rob Uncle Sam" onClick={this.handleTheft}></input>
+      <div class="taxTheft"  onClick={this.handleTheft}>Rob Uncle Sam</div>
     )
   }
 }
