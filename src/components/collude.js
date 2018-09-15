@@ -19,7 +19,7 @@ export class Collude extends React.Component{
     return (
       <div>
       Collude with:
-        <input type="button" value={this.props.offerTo} onClick={this.handleCollusion}></input>
+        <div className="collude" onClick={this.handleCollusion}>{this.props.offerTo}</div>
           {whosColluding(this.props.turn, this.props.player1, this.props.player2, this.props.player3, this.props.player4, this.handleCollusion)}
         {this.props.player1} {this.props.player2} {this.props.player3} {this.props.player4}
       </div>

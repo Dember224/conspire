@@ -13,7 +13,7 @@ export class HonestDay extends React.Component {
 
   render() {
     return (
-      <input type="button" value="Honest Day's Work" onClick={this.handleWork}></input>
+      <div className="honestDay" onClick={this.handleWork}>Honest Days Work</div>
     )
   }
 }

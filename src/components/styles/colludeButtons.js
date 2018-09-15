@@ -8,22 +8,22 @@ export function whosColluding(turn, player1, player2, player3, player4, handleCo
   switch(turn) {
     case 0:
       if (player1 != null) {
-        return<input type="button" value="Accept Offer" onClick={handleCollusion}></input>
+        return<div className="collude" type="button" onClick={handleCollusion}>Accept offer</div>
       };
     break;
     case 1:
       if (player2 != null) {
-        return<input type="button" value="Accept Offer" onClick={handleCollusion}></input>
+        return<div className="collude" type="button" onClick={handleCollusion}>Accept offer</div>
       } ;
     break;
     case 2:
       if (player3 != null) {
-        return<input type="button" value="Accept Offer" onClick={handleCollusion}></input>
+        return<div className="collude" type="button" onClick={handleCollusion}>Accept offer</div>
       } ;
     break;
     case 3:
       if (player4 != null) {
-        return<input type="button"value="Accept Offer" onClick={handleCollusion}></input>
+        return<div className="collude" type="button" onClick={handleCollusion}>Accept offer</div>
       } ;
     break;
   }

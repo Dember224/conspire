@@ -110,3 +110,39 @@ top:30px;
   background-color: black;
   cursor: pointer;
 }
+
+/* honest days work button */
+
+.honestDay{
+  border: solid;
+  border-radius: 20%;
+  width: 200px;
+  height: 25px;
+  margin:auto;
+  display: inline;
+  padding: 2px;
+}
+
+.honestDay:hover{
+  color:white;
+  background-color: black;
+  cursor: pointer;
+}
+
+/* Collusions */
+
+.collude{
+  border: solid;
+  border-radius: 20%;
+  width: 200px;
+  height: 25px;
+  display: inline-block;
+  margin:auto;
+  padding: 2px;
+}
+
+.collude:hover{
+  color:white;
+  background-color: black;
+  cursor: pointer;
+}
