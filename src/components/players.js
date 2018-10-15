@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import {Score} from './points.js'
 import {Participant} from './participant.js'
+import {Instructions} from './instructions.js'
 
 export class Player extends React.Component {
 
@@ -11,6 +12,7 @@ export class Player extends React.Component {
     return (
       <div>
         {<Participant />}
+        {<Instructions />}
       </div>
     )
   }

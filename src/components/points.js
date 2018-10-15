@@ -17,7 +17,7 @@ export class Score extends React.Component {
 
     return (
 
-      <div onClick={this.handleScore} number={this.props.number} className="button_score">{parseFloat(this.props.score).toFixed(2)}$</div>
+      <div onClick={this.handleScore} number={this.props.number} className="button_score">{parseFloat(this.props.score).toFixed(2)}$ <p>Start</p></div>
     )
   }
 }
